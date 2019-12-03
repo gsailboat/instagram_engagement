@@ -17,6 +17,9 @@
   color: white;
 }
 
+.ConsistentWidth {
+  width: 60vw
+}
 
 .SidePadding {
   padding-right: 5%;

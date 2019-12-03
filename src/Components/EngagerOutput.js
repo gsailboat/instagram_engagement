@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
+import { Card } from 'antd';
 import axios from 'axios';
-
-// let retry = function() {
-//     let i = 0;
-
-//     return function(max, timeout) {
-
-//     }
-// }
+import '../App.css'
 
 class EngagerOutput extends Component {
     constructor(props) {
@@ -23,15 +17,16 @@ class EngagerOutput extends Component {
         setTimeout(() => {
             axios.get(url)
             .then(res => {
+                console.log(url);
                 if (res.status === 200)
                     this.setState({
-                        info: JSON.stringify(res)
+                        info: JSON.stringify(res.data)
                     })
             })
             .catch(error => {
                 console.log(error)
             })
-        }, 1000)
+        }, 2000)
     };
 
     componentDidMount() {
@@ -43,7 +38,9 @@ class EngagerOutput extends Component {
     render() {
         // console.log(this.state.info)
         return (
-            <div>{this.state.info}</div>
+            <Card title="User Info" className="ConsistentWidth">
+                <div>{this.state.info}</div>
+            </Card>
         )
     }
 }

@@ -64,6 +64,12 @@ class UserInput extends Component {
         })
     }
 
+    closeOutput = () => {
+        this.setState({
+            id: ""
+        })
+    }
+
     render() {
         return (
             <div className="SidePadding">
@@ -80,7 +86,10 @@ class UserInput extends Component {
                     Submit
                 </Button>
                 {this.state.id ? (
-                    <EngagerOutput wait={5000} response={this.state.id} />
+                    <div>
+                        <EngagerOutput response={this.state.id} />
+                        <Button onClick={this.closeOutput}>New Search</Button>
+                    </div>
                 ) : null }
                 {this.state.alert ? (
                     <Alert

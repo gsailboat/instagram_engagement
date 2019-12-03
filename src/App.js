@@ -11,8 +11,9 @@ function App() {
       <div className="App-header">
         <h1>Instagram Engagement</h1>
         <h3>Username(s)</h3>
+        <UserInput />
       </div>
-      <UserInput />
+      {/* <UserInput /> */}
     </div>
   );
 }
