@@ -8,8 +8,7 @@ class EngagerOutput extends Component {
         super(props)
 
         this.state = {
-            loading: true,
-            info: []
+            info: "Waiting..."
         }
     }
 
@@ -31,14 +30,25 @@ class EngagerOutput extends Component {
 
     componentDidMount() {
         const url = 'https://fe-test-zyper-engagement.herokuapp.com/results/' + this.props.response;
-
+        // let response = this.getCall(url);
         this.getCall(url);
-        }
+
+        // this.setState({
+        //     info: response
+        // })
+        // if (response === "Waiting...")
+        //     response = this.getCall(url);
+    }
 
     render() {
         // console.log(this.state.info)
         return (
             <Card title="User Info" className="ConsistentWidth">
+                {/* <Table
+                    dataSource={this.state.info}
+                    rowKey="id"
+                    columns={this.state.info.map()}
+                /> */}
                 <div>{this.state.info}</div>
             </Card>
         )
