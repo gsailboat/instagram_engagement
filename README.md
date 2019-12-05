@@ -1,68 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+When running this project, just clone it and type ```yarn start``` into the main directory and it should run.
 
-In the project directory, you can run:
+Simply put, the app takes in usernames and an aggregate boolean and produces engagement data based off of the user.
 
-### `yarn start`
+A couple drawbacks include the API not being able to get private account data outside of follower and following numbers. Additionally, if you were trying to get aggregate data and one of the accounts is not valid, as the API should, it returns and invalid data response. So potentially making a way for the user to edit each username (which is possible) would be a better way.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Also, the setTimeout in getCall should take care of 202 (not completed) status calls and did for most of my testcases, but if a large number of usernames were being pulled from the request, I could potentially see this never showing any data considering my conditional is ```if (req.status === 200)```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+As for UI/UX, there are a couple minor changes that would help. First of all, the only aspect that is producing the data required for the POST request is directly based off the user's input. If they were to say put two spaces/newlines as opposed to one. That would result in an invalid user call. Additionally, adding more design/color would make this more fun but not a neccessity in my eyes as I see this frontend as more of an administrative tool.
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Also, I used axios for API calls. Considering all the options out there for this functionality, axios is very quick and easy to pick up. Ant Design is also a great styling library. JavaScript seemed like the fast easy way to go about this, but TypeScript in almost case where data is sensitive and needs optimization, TypeScript will be a good choice.
